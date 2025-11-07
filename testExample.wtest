@@ -1,9 +1,19 @@
-import example.pepita
+import example.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "demuestre que se controla la sarlanga" {
+  const pepita = new Tripulante(fuerza=1)
+  const pepota = new Tripulante(edad=20, fuerza=1000)
+  test "un tripulante con fuerza suficiente puede cambiar su rol a obrero" {
+    assert.that(pepota.podesCambiarA(new RolObrero()))
   }
+
+    test "un tripulante con fuerza insuficiente no puede cambiar su rol a obrero" {
+      assert.notThat(pepita.podesCambiarA(new RolObrero()))
+    }
+
+    test "un tripulante menor de edad no puede cambiar su rol a obrero" {
+      const menor = new Tripulante(edad=1)
+      assert.notThat(menor.podesCambiarA(new RolObrero()))
+    }
 
 }
